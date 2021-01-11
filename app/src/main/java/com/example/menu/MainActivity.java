@@ -27,19 +27,21 @@ public class MainActivity extends AppCompatActivity {
         try {
             db = this.openOrCreateDatabase("MenuDb",MODE_PRIVATE,null);
             db.execSQL("create table tblGroups (" +
-                    "id integer PRIMARY KEY autoincrement," +
-                    "name text," +
-                    "picture image ); " );
+                    "integer id PRIMARY KEY autoincrement," +
+                    "text name not null UNIQUE," +
+                    "image picture ); " );
 
             db.execSQL("create table tblProducts (" +
-                    "id integer PRIMARY KEY autoincrement," +
-                    "gid integer," +
-                    "picture image," +
-                    "name text," +
+                    "integer id PRIMARY KEY autoincrement," +
+                    "integer gid," +
+                    "image picture ," +
+                    "text name not null UNIQUE," +
                     "price decimal(10,2)); " );
-            db.close();
+
         }catch (SQLiteException e){
             e.printStackTrace();
+        }finally {
+            db.close();
         }
     }
 
