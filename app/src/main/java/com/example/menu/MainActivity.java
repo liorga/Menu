@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        File storagePath = getApplication().getFilesDir();
+        //File storagePath = getApplication().getFilesDir();
 
-        String myDbPath = storagePath + "/" + "MenuProject";
+        //String myDbPath = storagePath + "/" + "MenuProject";
 
         try {
             db = this.openOrCreateDatabase("MenuDb",MODE_PRIVATE,null);
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                     "picture image," +
                     "name text," +
                     "price decimal(10,2)); " );
-
             db.close();
         }catch (SQLiteException e){
             e.printStackTrace();
@@ -50,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void editMenu(View view){
-
+        Intent switch_intent = new Intent(this, EditMenu.class);
+        startActivity(switch_intent);
     }
 
 }
