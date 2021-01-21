@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Menu">
         <activity android:name=".EditItem"></activity>
-        <activity android:name=".DeleteItem" />
         <activity android:name=".AddItem" />
         <activity android:name=".EditMenu" />
         <activity android:name=".Menu" />

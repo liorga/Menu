@@ -24,10 +24,5 @@ public class EditMenu extends AppCompatActivity {
         startActivity(switch_intent);
     }
 
-    public void deleteItem(View view){
-        Intent switch_intent = new Intent(this, DeleteItem.class);
-        startActivity(switch_intent);
-    }
-
 
 }

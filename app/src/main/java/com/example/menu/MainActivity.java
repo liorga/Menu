@@ -13,35 +13,28 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
-
+    private SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //File storagePath = getApplication().getFilesDir();
-
-        //String myDbPath = storagePath + "/" + "MenuProject";
-
         try {
             db = this.openOrCreateDatabase("MenuDb",MODE_PRIVATE,null);
-            db.execSQL("create table tblGroups (" +
-                    "integer id PRIMARY KEY autoincrement," +
-                    "text name not null UNIQUE," +
-                    "image picture ); " );
+            db.execSQL("create table if not exists  tblGroups (" +
+                    "id integer PRIMARY KEY autoincrement," +
+                    "name VARCHAR UNIQUE not null," +
+                    "image BLOB ) " );
 
-            db.execSQL("create table tblProducts (" +
-                    "integer id PRIMARY KEY autoincrement," +
-                    "integer gid," +
-                    "image picture ," +
-                    "text name not null UNIQUE," +
-                    "price decimal(10,2)); " );
+            db.execSQL("create table if not exists tblProducts (" +
+                    "id integer PRIMARY KEY autoincrement," +
+                    "gid integer ," +
+                    "image BLOB ," +
+                    "name VARCHAR UNIQUE not null," +
+                    "price decimal(10,2)) " );
 
         }catch (SQLiteException e){
             e.printStackTrace();
-        }finally {
-            db.close();
         }
     }
 
